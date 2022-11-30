@@ -12,7 +12,7 @@ selected_movie_name = st.selectbox(
 "Type or select an anime from the dropdown",
  animes['Title'].values
 )
-ratings = pd.read_csv('cleaned_rating.csv')
+
 data = pd.read_csv('cleaned_anime.csv')
 
 from sklearn.feature_extraction.text import TfidfVectorizer
