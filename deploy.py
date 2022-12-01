@@ -2,7 +2,7 @@ import streamlit as st
 
 import pickle
 import pandas as pd
-import plotly.graph_objects as go
+
 
 animes_dict = pickle.load(open('animes.pkl','rb'))
 animes = pd.DataFrame(animes_dict)
