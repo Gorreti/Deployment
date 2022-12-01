@@ -28,6 +28,7 @@ cosine_sim = linear_kernel(tfidf_matrix, tfidf_matrix)
 
 indices = pd.Series(data.index, index=data['Title']).drop_duplicates()
 
+@st.cache
 def get_recommendations(title, cosine_sim=cosine_sim):
     idx = indices[title]
     sim_scores = list(enumerate(cosine_sim[idx]))
