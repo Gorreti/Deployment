@@ -38,6 +38,7 @@ def get_recommendations(title, cosine_sim=cosine_sim):
     movie_indices = [i[0] for i in sim_scores]
     return data[['Title', 'Synopsis']].iloc[movie_indices]
 
+@st.cache
 def Table(df):
     fig=go.Figure(go.Table( columnorder = [1,2,3],
           columnwidth = [10,28],
