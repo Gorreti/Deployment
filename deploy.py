@@ -21,7 +21,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 tfidf = TfidfVectorizer(stop_words='english')
 data['Title'] = data['Title'].fillna('')
-tfidf_matrix = tfidf.fit_transform(data['Synopsis'])
+tfidf_matrix = tfidf.fit_transform(data['Title'])
 
 
 from sklearn.metrics.pairwise import linear_kernel
