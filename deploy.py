@@ -38,25 +38,8 @@ def get_recommendations(title, cosine_sim=cosine_sim):
     movie_indices = [i[0] for i in sim_scores]
     return data[['Title', 'Synopsis']].iloc[movie_indices]
 
-@st.cache
-def Table(df):
-    fig=go.Figure(go.Table( columnorder = [1,2,3],
-          columnwidth = [10,28],
-            header=dict(values=[' Title','Description'],
-                        line_color='black',font=dict(color='black',size= 19),height=40,
-                        fill_color='#dd571c',#
-                        align=['left','center']),
-                cells=dict(values=[df.title,df.description],
-                       fill_color='#ffdac4',line_color='grey',
-                           font=dict(color='black', family="Lato", size=16),
-                       align='left')))
-    fig.update_layout(height=600, title ={'text': "Top 10 Anime Recommendations", 'font': {'size': 22}},title_x=0.5
-                     )
-    return st.plotly_chart(fig,use_container_width=True)
-    
-
 if st.button('Show Recommendation'):
       recommended_movie_names = get_recommendations(selected_movie_name)
-      Table(recommended_movie_names)
+      recommended_movie_names
       
       
