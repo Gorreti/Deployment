@@ -20,7 +20,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 tfidf = TfidfVectorizer(stop_words='english')
-data['Synopsis'] = data['Synopsis'].fillna('')
+data['Title'] = data['Title'].fillna('')
 tfidf_matrix = tfidf.fit_transform(data['Synopsis'])
 
 
@@ -36,10 +36,12 @@ def get_recommendations(title, cosine_sim=cosine_sim):
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
     sim_scores = sim_scores[1:11]
     movie_indices = [i[0] for i in sim_scores]
-    return data[['Title', 'Synopsis']].iloc[movie_indices]
+    return data['Title'].iloc[movie_indices]
 
 if st.button('Show Recommendation'):
       recommended_movie_names = get_recommendations(selected_movie_name)
-      recommended_movie_names
+      
+      for i in recommended_movie_names:
+        st.write(i)
       
       
